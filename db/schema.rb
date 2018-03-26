@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180326193846) do
   end
 
   create_table "edibles", force: :cascade do |t|
+    t.string "name"
     t.boolean "fly"
     t.boolean "swim"
     t.integer "value"
