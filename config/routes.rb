@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :decisions
-  resources :results
-  resources :edibles
-  resources :locations
-  resources :creatures
-  resources :users
+  get '/login' => 'sessions#new'
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+  get '/home' => 'users#home'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

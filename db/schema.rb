@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20180326193846) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
+    t.boolean "swimming"
+    t.boolean "fly"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
