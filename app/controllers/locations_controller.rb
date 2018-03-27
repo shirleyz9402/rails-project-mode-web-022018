@@ -6,6 +6,14 @@ class LocationsController < ApplicationController
   end
 
   def next
-    redirect_to "/locations/#{params[:next][:next_id]}"
+    @location = Location.find(params[:next][:next_id])
+    @creature = Creature.find(session[:creature_id])
+
+    @creature.visit(@location)
+    if @creature.alive?
+      redirect_to "/locations/#{@location.id}"
+    else
+      redirect_to "/death"
+    end
   end
 end
