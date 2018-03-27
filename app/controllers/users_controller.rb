@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
     return redirect_to controller: 'users', action: 'new' unless @user.save
     session[:user_id] = @user.id
     redirect_to controller: 'users', action: 'home'
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def death
-    @user = User.find(session[:user_id])
+     # @user = User.find(session[:user_id])
     @result = @user.results.last
   end
 

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :locations, only: :show
   resources :edibles, only: [:update]
   resources :creatures, only: :create
+  resources :results, only: :index
+  # resources :users, only: [:new, :create]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -11,7 +11,6 @@ class Creature < ApplicationRecord
         creature: self,
         location: edible.location,
         cause_of_death: "You bit off more than you can chew. \nDeath by asphyxiation!!!!")
-        byebug
         self.results << result
         self.save
     else
