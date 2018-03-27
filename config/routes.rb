@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/home' => 'users#home'
+  get '/death' => 'users#death'
+  post '/next' => 'locations#next'
+
 
   resources :locations, only: :show
   resources :edibles, only: [:update]

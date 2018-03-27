@@ -3,6 +3,7 @@ class EdiblesController < ApplicationController
     @creature = Creature.find(session[:creature_id])
     @edible = Edible.find(params[:edible_id])
 
+    @user = User.find(session[:user_id])
     @creature.eat(@edible)
     @creature.save
     @edible.save
@@ -10,8 +11,8 @@ class EdiblesController < ApplicationController
     if @creature.alive?
       redirect_to "/locations/#{@edible.location_id}"
     else
-      # death
-      redirect_to "/home"
+
+      redirect_to "/death"
     end
   end
 end

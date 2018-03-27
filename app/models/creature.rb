@@ -7,11 +7,13 @@ class Creature < ApplicationRecord
     if edible.value > self.size
       self.alive = false
       result = Result.create(
-        user_id: session[:user_id],
+        user: self.user,
         creature: self,
         location: edible.location,
         cause_of_death: "You bit off more than you can chew. \nDeath by asphyxiation!!!!")
+        byebug
         self.results << result
+        self.save
     else
       self.size += edible.value
       self.fly = true if edible.fly
