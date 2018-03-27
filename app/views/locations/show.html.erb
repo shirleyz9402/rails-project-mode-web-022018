@@ -1,7 +1,9 @@
 <h1><%= @location.name %></h1>
-<%= session[:creature][:name] %>
+Your creature: <br>
+<%= @creature.name %>, <%= @creature.size %>, can fly: <%= @creature.fly %>, can swim: <%= @creature.swim %>
+<br><br>
 <% @location.edibles.each do |edible| %>
-  <% if edible.eaten == false %>
+  <% if !edible.eaten %>
     <%= edible.name %>
     <%=form_tag(edible_path(edible), method: :put) do %>
     <%= hidden_field_tag :edible_id, edible.id%>

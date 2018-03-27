@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180326193846) do
     t.integer "user_id"
     t.integer "creature_id"
     t.integer "location_id"
+    t.string "cause_of_death"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creature_id"], name: "index_results_on_creature_id"
