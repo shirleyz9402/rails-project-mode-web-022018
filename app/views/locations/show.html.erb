@@ -1,5 +1,5 @@
 <h1><%= @location.name %></h1>
-
+<%= session[:creature][:name] %>
 <% @location.edibles.each do |edible| %>
   <% if edible.eaten == false %>
     <%= edible.name %>
