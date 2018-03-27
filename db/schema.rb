@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20180326193846) do
 
   create_table "decisions", force: :cascade do |t|
     t.integer "location_id"
+    t.string "content"
+    t.boolean "alive", default: true
+    t.integer "goto"
+    t.string "cod", default: "staying alibe"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_decisions_on_location_id"

@@ -24,3 +24,7 @@ edibles = Edible.create([
   {name: "nuclear reactor", value: 1000 , fly: false, swim: false, location: chernobyl},
   {name: "moon", value: 2000 , fly: false, swim: false, location: moon}
   ])
+decisions = Decision.create([
+  {content: "Wait for your siblings to hatch", location: sewer, alive: false, cod: "Eaten by yo siblings brah"},
+  {content: "Venture out on your own", location: sewer, goto: 2}
+  ])

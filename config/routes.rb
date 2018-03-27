@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/login' => 'sessions#new'
+  get '/' => 'sessions#new'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   post '/login' => 'sessions#create'
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: :show
   resources :edibles, only: [:update]
+  resources :decisions, only: [:update]
   resources :creatures, only: :create
   resources :results, only: :index
   # resources :users, only: [:new, :create]

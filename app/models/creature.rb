@@ -19,5 +19,17 @@ class Creature < ApplicationRecord
       self.swim = true if edible.swim
     end
   end
+  def decide(decision)
+    if !decision.alive
+      self.alive = false
+      result = Result.create(
+        user: self.user,
+        creature: self,
+        location: decision.location,
+        cause_of_death: decision.cod)
+      self.results << result
+      self.save
+    end
+  end
 
 end
