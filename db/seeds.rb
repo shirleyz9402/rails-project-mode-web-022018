@@ -1,19 +1,26 @@
 
-location1 = Location.create(name: "Sewer", swimming: false, fly: false)
-location2 = Location.create(name: "Central Park", swimming: false, fly: false)
-location3 = Location.create(name: "Pond", swimming: true, fly: false)
-location4 = Location.create(name: "Dumpster", swimming: false, fly: false)
-location5 = Location.create(name: "Moon", swimming: false, fly: true)
-location6 = Location.create(name: "Chernobyl", swimming: true, fly: true)
-location7 = Location.create(name: "Tokyo", swimming: true, fly: true)
+sewer = Location.create(name: "Sewer", swim: false, fly: false)
+trump_tower = Location.create(name: "Trump Tower", swim: false, fly: false)
+central_perk = Location.create(name: "Central Perk", swim: false, fly: false)
+pond = Location.create(name: "Pond", swim: true, fly: false)
+dumpster = Location.create(name: "Dumpster", swim: false, fly: false)
+chernobyl = Location.create(name: "Chernobyl", swim: false, fly: true)
+tokyo = Location.create(name: "Tokyo", swim: true, fly: false)
+moon = Location.create(name: "Moon", swim: false, fly: true)
 
 edibles = Edible.create([
-  {name: "cockamouse", value: 5 , fly: false, swim: false, deadly: false, location_id: nil},
-  {name: "glowing turd", value: 10 , fly: false, swim: true, deadly: false, location_id: nil},
-  {name: "cat", value: 20, fly: false, swim: false, deadly: false, location_id: nil},
-  {name: "dead baby", value: 50 , fly: true, swim: false, deadly: false, location_id: nil},
-  {name: "cheese", value: 20 , fly: false, swim: false, deadly: true, location_id: nil},
-  {name: "car", value: 75 , fly: false, swim: false, deadly: false, location_id: nil},
-  {name: "flower", value: 10, fly: false, swim: false, deadly: true, location_id: nil},
-  {name: "cactus", value: 5 , fly: false, swim: false, deadly: false, location_id: nil}
+  {name: "cockamouse", value: 5, fly: false, swim: false, location: dumpster},
+  {name: "glowing turd", value: 10, fly: false, swim: true, location: chernobyl},
+  {name: "dancing turd", value: 10, fly: false, swim: false, location: dumpster},
+  {name: "suspicious brown drank", value: 10, fly: false, swim: true, location: central_perk},
+  {name: "toupee", value: 10 , fly: false, swim: false, location: trump_tower},
+  {name: "smelly cat", value: 20, fly: false, swim: false, location: central_perk},
+  {name: "Magikarp", value: 40 , fly: false, swim: false, location: pond},
+  {name: "pedalboat", value: 100 , fly: false, swim: false, location: pond},
+  {name: "tanning bed", value: 100 , fly: true, swim: false, location: trump_tower},
+  {name: "Totoro", value: 250 , fly: true, swim: false, location: tokyo},
+  {name: "baby Godzilla", value: 500 , fly: false, swim: false, location: tokyo},
+  {name: "Transformer", value: 600 , fly: false, swim: false, location_id: moon},
+  {name: "nuclear reactor", value: 1000 , fly: false, swim: false, location: chernobyl},
+  {name: "moon", value: 2000 , fly: false, swim: false, location: moon}
   ])

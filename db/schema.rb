@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 20180326193846) do
 
   create_table "creatures", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "size"
-    t.boolean "fly"
-    t.boolean "swim"
-    t.boolean "alive"
+    t.integer "size", default: 5
+    t.boolean "fly", default: false
+    t.boolean "swim", default: false
+    t.boolean "alive", default: true
     t.string "name"
     t.string "type"
     t.datetime "created_at", null: false
@@ -33,10 +33,11 @@ ActiveRecord::Schema.define(version: 20180326193846) do
   end
 
   create_table "edibles", force: :cascade do |t|
+    t.string "name"
     t.boolean "fly"
     t.boolean "swim"
     t.integer "value"
-    t.boolean "deadly"
+    t.boolean "eaten", default: false
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180326193846) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
-    t.boolean "swimming"
+    t.boolean "swim"
     t.boolean "fly"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
