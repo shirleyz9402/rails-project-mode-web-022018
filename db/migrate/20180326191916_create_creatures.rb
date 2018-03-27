@@ -7,7 +7,7 @@ class CreateCreatures < ActiveRecord::Migration[5.1]
       t.boolean :swim, default: false
       t.boolean :alive, default: true
       t.string :name
-      t.string :type
+      t.string :creature_type, default: "hungry hungry caterpillar"
 
       t.timestamps
     end

@@ -9,5 +9,5 @@ class EdiblesController < ApplicationController
     else
       # death page
     end
-  end 
+  end
 end

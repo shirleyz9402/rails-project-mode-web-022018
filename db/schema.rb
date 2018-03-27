@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180326193846) do
     t.boolean "swim", default: false
     t.boolean "alive", default: true
     t.string "name"
-    t.string "type"
+    t.string "creature_type", default: "hungry hungry caterpillar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_creatures_on_user_id"
