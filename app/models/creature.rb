@@ -18,12 +18,19 @@ class Creature < ApplicationRecord
         cause_of_death: "You bit off more than you can chew. \nDeath by asphyxiation!!!!")
       self.results << result
       self.save
+      "Game OGER"
     else
       self.size += edible.value
 
-      # should tell them they have new abilities when they gain them
-      self.fly = true if edible.fly
-      self.swim = true if edible.swim
+      if edible.fly && !self.fly
+        self.fly = true
+        "Wow! What did you eat? You've sprouted wings!"
+      elsif edible.swim && !self.swim
+        self.swim = true
+        "You seem to have grown some webbed feet. Congrats, you can swim!"
+      else
+        "You got bigger!"
+      end
     end
   end
   def decide(decision)

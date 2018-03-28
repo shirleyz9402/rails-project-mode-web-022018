@@ -11,7 +11,7 @@ class CreaturesController < ApplicationController
       redirect_to "/home"
     end
   end
-
+  
   private
   def reset
     Edible.all.each do |edible|
