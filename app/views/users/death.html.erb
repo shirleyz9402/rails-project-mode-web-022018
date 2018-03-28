@@ -1,7 +1,20 @@
-<h1>Sorry, <%= @result.creature.name %> died.</h1>
+<h1 class="jumbotron text-center "> Sorry, <%= @result.creature.name %> died...</h1> <br><br>
 
-<%= @result.cause_of_death %><br>
-<%= @result.location.name %><br>
-<%= @result.creature.size %><br>
-<%=link_to "Home", '/home' %>
+<div class="table-striped">
+
+<table align="center" style="width:50%" border="2">
+  <tr class="text-center">
+    <th><strong>Cause of Death </strong></th>
+    <th><strong>Location </strong></th>
+    <th><strong>Size </strong></th>
+  </tr>
+  <tr class="text-center">
+    <td><%= @result.cause_of_death %></td>
+    <td><%= @result.location.name %></td>
+    <td><%= @result.creature.size_to_string %></td>
+  </tr>
+</table>
+
+</div>
+
 <%# link to leaderboard %>

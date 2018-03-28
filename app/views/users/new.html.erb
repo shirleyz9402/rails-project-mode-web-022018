@@ -1,13 +1,22 @@
-<%# , controller: 'users', action: 'create' %>
+<br>
+<br>
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
-  <%= f.label :name %>
+<div class="row">
+
+<div class="col-md-3 text-center">
+
+  <%= f.label :name, "Username:" %>
   <%= f.text_field :name %>
+</div>
 
-  <%= f.label :password %>
+<div class="col-md-3">
+
+  <%= f.label :password, "Password:" %>
   <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
+</div>
+<div class="col-md-4">
+  <%= f.label :password_confirmation, "Password Confirmation:" %>
   <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "create" %>
+  <%= f.submit "Create" , class: "btn btn-secondary" %>
+  </div>
 <% end %>

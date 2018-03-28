@@ -26,5 +26,5 @@ edibles = Edible.create([
   ])
 decisions = Decision.create([
   {content: "Wait for your siblings to hatch", location: sewer, alive: false, cod: "Eaten by yo siblings brah"},
-  {content: "Venture out on your own", location: sewer, goto: 2}
+  {content: "Venture out on your own", location: sewer, goto: 5}
   ])

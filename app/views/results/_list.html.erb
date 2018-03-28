@@ -1,38 +1,24 @@
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 hid">
+<br><br>
+<div class="table-hover">
+
+  <table align="center" style="width:70%" border="2">
+    <tr align= "center">
+      <th>Rank</th>
+      <th>Username</th>
+      <th>Size</th>
+      <th>Location of Death </th>
+    </tr>
 
     <% @results.each_with_index do |result, index| %>
-  <!-- <%= index+1 %>.
-    <% if index == 0 %>
-      <strong>
+    <tr align= "center">
+      <td><%= index + 1 %>.</td>
+      <td><%= result.user.name %></td>
+      <td><%= result.creature.size %></td>
+      <td><%= result.location.name %></td>
+    </tr>
+
+
     <% end %>
+  </table>
 
-   <%= result.user.name %> | <%= result.creature.size %> | <%= result.location.name %>
-
-   <% if index == 0 %>
-    </strong>
-   <% end %>
-  <br> -->
-
-
-
-  <div class="row">
-    <div class="col-md-3">
-      <%= index + 1 %>
-    </div>
-    <div class="col-md-3">
-      <%= result.user.name %>
-    </div>
-    <div class="col-md-3">
-      <%= result.creature.size %>
-    </div>
-    <div class="col-md-3">
-      <%= result.location.name %>
-    </div>
-  </div>
-
-
-<% end %>
-
-</div>
 </div>
