@@ -1,6 +1,13 @@
 <h1><%= @location.name %></h1>
-Your creature: <br>
-<%= @creature.name %>, <%= @creature.size %>, can fly: <%= @creature.fly %>, can swim: <%= @creature.swim %>
+
+
+<h2><%= @creature.name %></h2>
+<ul>
+  <li>size: <%= @creature.size_to_string %></li>
+  <li>type: <%= @creature.creature_type %></li>
+  <li>can fly: <%= @creature.fly ? "yep" : "no" %></li>
+  <li>can swim: <%= @creature.swim ? "yep" : "no" %></li>
+</ul>
 <br><br>
 <% @location.edibles.each do |edible| %>
   <% if !edible.eaten %>

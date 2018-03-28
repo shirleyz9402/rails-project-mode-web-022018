@@ -2,8 +2,11 @@ class Creature < ApplicationRecord
   belongs_to :user
   has_many :results
 
-  def eat(edible)
+  def size_to_string
+    self.size.to_s + " inches"
+  end
 
+  def eat(edible)
 
     edible.eaten = true
     if edible.value > self.size

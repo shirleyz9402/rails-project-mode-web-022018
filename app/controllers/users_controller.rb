@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def home
-    @results = @user.results
+    @results = @user.results_descending
   end
 
   def death

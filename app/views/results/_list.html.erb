@@ -1,4 +1,13 @@
-<% @results.each do |result| %>
-  <%= result.user.name %> | <%= result.creature.size %> | <%= result.location.name %>
+<% @results.each_with_index do |result, index| %>
+  <%= index+1 %>.
+    <% if index == 0 %>
+      <strong>
+    <% end %>
+
+   <%= result.user.name %> | <%= result.creature.size %> | <%= result.location.name %>
+
+   <% if index == 0 %>
+    </strong>
+   <% end %>
   <br>
 <% end %>
