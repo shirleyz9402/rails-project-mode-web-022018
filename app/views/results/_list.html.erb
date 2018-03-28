@@ -1,5 +1,8 @@
-<% @results.each_with_index do |result, index| %>
-  <%= index+1 %>.
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 hid">
+
+    <% @results.each_with_index do |result, index| %>
+  <!-- <%= index+1 %>.
     <% if index == 0 %>
       <strong>
     <% end %>
@@ -9,5 +12,27 @@
    <% if index == 0 %>
     </strong>
    <% end %>
-  <br>
+  <br> -->
+
+
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= index + 1 %>
+    </div>
+    <div class="col-md-3">
+      <%= result.user.name %>
+    </div>
+    <div class="col-md-3">
+      <%= result.creature.size %>
+    </div>
+    <div class="col-md-3">
+      <%= result.location.name %>
+    </div>
+  </div>
+
+
 <% end %>
+
+</div>
+</div>

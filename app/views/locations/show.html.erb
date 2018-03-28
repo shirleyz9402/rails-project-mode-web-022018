@@ -1,39 +1,91 @@
-<h1><%= @location.name %></h1>
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="display-3"><%= @location.name %></h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+          </div>
+          <div class="col-md-5">
+            <h1 class="display-5"><%= @creature.name %></h1>
+            <p><b>Size:</b> <%= @creature.size %></p>
+            <p><b>Type:</b> <%= @creature.creature_type %></p>
+            <p><b>Can fly:</b> <%= @creature.fly ? "yep" : "nope" %></p>
+            <p><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-<h2><%= @creature.name %></h2>
-<ul>
-  <li>size: <%= @creature.size_to_string %></li>
-  <li>type: <%= @creature.creature_type %></li>
-  <li>can fly: <%= @creature.fly ? "yep" : "no" %></li>
-  <li>can swim: <%= @creature.swim ? "yep" : "no" %></li>
-</ul>
-<br><br>
-<% @location.edibles.each do |edible| %>
-  <% if !edible.eaten %>
-    <%= edible.name %>
-    <%= form_tag(edible_path(edible), method: :put) do %>
-    <%= hidden_field_tag :edible_id, edible.id%>
-    <%=submit_tag "Eat"  %>
-    <% end %>
-  <% end %>
-<% end %>
-<% @location.decisions.each do |decision| %>
-    <%= decision.content %>
-    <%= form_tag(decision_path(decision), method: :put) do %>
-    <%= hidden_field_tag :decision_id, decision.id%>
-    <%=submit_tag "Pick me!"  %>
-    <% end %>
-<% end %>
-<br><br>
 
-  <%#= form_tag controller: :locations, action: :next do %>
-  <% if @location.id != 1 %>
-  <%= form_tag '/next', method: :post do %>
-     <%= collection_select(:next, :next_id, Location.all, :id,:name)%>
-     <%= submit_tag "Go To" %>
-  <% end %>
-  <% end %>
+  <!-- <div class="row">
+    <div class="container">
+        <div class="jumbotron text-center col-md-6">
+            <h1><%= @location.name %></h1>
+            <p>Here you will learn how to become awesome.</p>
+            <a class="btn btn-danger pull-right" href="{% url 'awesome_info' %}">More Info</a>
+        </div>
 
+        <div class="jumbotron text-center col-md-6">
+            <h1><%= @creature.name %></h1>
+            <p>Tubular dude.</p>
+            <a class="btn btn-success" href="{% url 'rad_info' %}" role="button">More Info</a>
+        </div>
+    </div>
+</div> -->
 
- <%#= link_to "Go To", controller: :locations, action: :next %>
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+
+      <% @location.edibles.each do |edible| %>
+        <% if !edible.eaten %>
+
+          <div class="col-md-4">
+            <h2><%= edible.name %></h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <%= form_tag(edible_path(edible), method: :put) do %>
+              <%= hidden_field_tag :edible_id, edible.id%>
+              <%=submit_tag "Eat", class: "btn btn-secondary"  %>
+            <% end %>
+            <!-- <p><a class="btn btn-secondary" href="#" role="button">Eat</a></p> -->
+          </div>
+
+        <% end %>
+      <% end %>
+
+      <% if @location.id != 1 %>
+
+        <div class="col-md-4">
+          <h2>Where u wanna go?</h2>
+          <p>
+            <%= form_tag '/next', method: :post do %>
+               <%= collection_select(:next, :next_id, Location.all, :id,:name)%>
+               <%= submit_tag "Go", class: "btn btn-secondary" %>
+            <% end %>
+          </p>
+        </div>
+
+      <% end %>
+
+      <!-- <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div> -->
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
