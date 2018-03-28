@@ -18,7 +18,7 @@ class Creature < ApplicationRecord
         cause_of_death: "You bit off more than you can chew. \nDeath by asphyxiation!!!!")
       self.results << result
       self.save
-      "Game OGER"
+      "Game OVER"
     else
       self.size += edible.value
 
@@ -33,6 +33,21 @@ class Creature < ApplicationRecord
       end
     end
   end
+
+  def evolve
+    if self.size >= 10 && self.creature_type == "hungry hungry caterpillar"
+      self.creature_type = "a slightly bigger caterpillar"
+      "You have evolved into a slightly bigger caterpillar!"
+    elsif self.size >= 20 && self.creature_type == "a slightly bigger caterpillar"
+      self.creature_type = "a mutant cocoon"
+      "You have evolved into a a mutant cocoon!"
+    elsif self.size >= 50 && self.creature_type == "a mutant cocoon"
+      self.creature_type = "a radiant moth"
+      "You have evolved into a a radiant moth!"
+    end
+  end
+
+
   def decide(decision)
     if !decision.alive
       self.alive = false

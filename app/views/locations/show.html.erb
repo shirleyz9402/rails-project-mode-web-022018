@@ -5,15 +5,15 @@
     <div class="jumbotron" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
       <div class="container">
         <div class="row">
-          <div class="col-md-7 location" >
+          <div class="col-md-8 location">
             <h1 class="display-3"><%= @location.name %></h1>
             <!-- <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p> -->
             <%#= image_tag "#{@location.name.downcase}.jpg" %>
             <% flash.each do |key, value| %>
-              <p><%= value %></p>
+              <% if value %><div class="notice"><%= value %></div><% end %>
             <% end %>
           </div>
-          <div class="col-md-5 creature">
+          <div class="col-md-4 creature">
             <h1 class="display-5"><%= @creature.name %></h1>
             <p><b>Size:</b> <%= @creature.size %></p>
             <p><b>Type:</b> <%= @creature.creature_type %></p>
