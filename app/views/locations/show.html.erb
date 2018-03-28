@@ -2,29 +2,39 @@
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <div class="jumbotron row">
-        <div class="col-md-5 ">
-          <h1 class="page-header"><%= @location.name %></h1><br>
-          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        </div>
-        <div class="col-md-3"></div>
-        <div class="col-md-4">
-          <h1><%= @creature.name %></h1><br>
-          <p><b>Size:</b> <%= @creature.size %></p>
-          <p><b>Type:</b> <%= @creature.creature_type %></p>
-          <p><b>Can fly:</b> <%= @creature.fly ? "yep" : "nope" %></p>
-          <p><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></p>
+    <div class="jumbotron" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 location" >
+            <h1 class="display-3"><%= @location.name %></h1>
+            <!-- <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p> -->
+            <%#= image_tag "#{@location.name.downcase}.jpg" %>
+            <% flash.each do |key, value| %>
+              <p><%= value %></p>
+            <% end %>
+          </div>
+          <div class="col-md-5 creature">
+            <h1 class="display-5"><%= @creature.name %></h1>
+            <p><b>Size:</b> <%= @creature.size %></p>
+            <p><b>Type:</b> <%= @creature.creature_type %></p>
+            <p><b>Can fly:</b> <%= @creature.fly ? "yep" : "nope" %></p>
+            <p><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></p>
+          </div>
         </div>
       </div>
-<br><br>
-  <div class="row">
+    </div>
+
+
+  <div class="container">
     <!-- Example row of columns -->
     <div class="container">
 
       <% @location.edibles.each do |edible| %>
         <% if !edible.eaten %>
 
-          <div class="col-md-4">
+          <div class="col-md-4 edible">
+            <h2><%= edible.name %></h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
             <%= form_tag(edible_path(edible), method: :put) do %>
               <h2><%=label_tag edible.name %>
               <%= hidden_field_tag :edible_id, edible.id%>

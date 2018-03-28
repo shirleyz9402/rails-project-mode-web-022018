@@ -4,7 +4,7 @@ class EdiblesController < ApplicationController
     @edible = Edible.find(params[:edible_id])
 
     @user = User.find(session[:user_id])
-    @creature.eat(@edible)
+    flash[:notice] = @creature.eat(@edible)
     @creature.save
     @edible.save
 
