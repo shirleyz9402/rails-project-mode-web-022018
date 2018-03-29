@@ -19,7 +19,7 @@
             <li><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></li>
           </ul>
           <% flash.each do |key, value| %>
-          <div class="alert alert-success" role="alert"><%=value %></div>
+            <% if value %> <div class="alert alert-success" role="alert"><%=value %></div> <% end %>
           <% end %>
         </div>
         </div>
