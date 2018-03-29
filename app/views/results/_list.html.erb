@@ -8,6 +8,7 @@
       <th class="text-center">Username</th>
       <th class="text-center">Creature Name</th>
       <th class="text-center">Size</th>
+      <th class="text-center">Time Elapsed</th>
       <th class="text-center">Location of Death </th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
       <td><%= result.user.name %></td>
       <td><%= result.creature.name %></td>
       <td><%= result.creature.size %></td>
+      <td><%= ((result.creature.updated_at.to_time.to_i - result.creature.created_at.to_time.to_i).to_f/60).round(2)%> minutes </td>
       <td><%= result.location.name %></td>
     </tr>
     <% end %>

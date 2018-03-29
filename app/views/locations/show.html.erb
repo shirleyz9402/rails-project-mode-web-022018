@@ -11,10 +11,10 @@
 
     <div class="jumbotron jumbotron-fluid" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
       <div class="container-fluid">
-        <% if @location.name != "Dumpster" || "Pond" || "Serengeti" || "Moon" %>
-            <h1 id="jumbo-text">Welcome to <%= @location.name %>!<br><p style="text-align:left"><br>Whatchu wanna do?</p> </h1>
+        <% if ["Dumpster","Pond","Serengeti","Moon"].include?(@location.name)%>
+        <h1 id="jumbo-text">Welcome to the <%= @location.name %>!<br><p style="text-align:left">Whatchu wanna do?</p> </h1>
         <% else  %>
-          <h1 id="jumbo-text">Welcome to the <%= @location.name %>!<br><p style="text-align:left">Whatchu wanna do?</p> </h1>
+          <h1 id="jumbo-text">Welcome to <%= @location.name %>!<br><p style="text-align:left"><br>Whatchu wanna do?</p> </h1>
         <% end  %>
             <div style="font-size:12pt" id="jumbo-text" >
             <strong><%= @creature.name %>'s stats:</strong>
