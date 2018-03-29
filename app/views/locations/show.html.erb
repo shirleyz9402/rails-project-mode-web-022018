@@ -4,13 +4,19 @@
     font-size: 1.25em;
   }
   b {font-weight: 600;}
+  #jumbo-text p {
+    font-size: 20pt;
+  }
 </style>
 
     <div class="jumbotron jumbotron-fluid" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
       <div class="container-fluid">
-            <h1 id="jumbo-text"><%= @location.name %></h1>
-
-            <div class="lead" id="jumbo-text" >
+        <% if @location.name != "Dumpster" || "Pond" || "Serengeti" || "Moon" %>
+            <h1 id="jumbo-text">Welcome to <%= @location.name %>!<br><p style="text-align:left"><br>Whatchu wanna do?</p> </h1>
+        <% else  %>
+          <h1 id="jumbo-text">Welcome to the <%= @location.name %>!<br><p style="text-align:left">Whatchu wanna do?</p> </h1>
+        <% end  %>
+            <div style="font-size:12pt" id="jumbo-text" >
             <strong><%= @creature.name %>'s stats:</strong>
             <ul>
             <li><b>Size:</b> <%= @creature.size_to_string %> </li>
@@ -44,11 +50,12 @@
               <div class="item selection-bar">
                  <p><b>Where u wanna go? </b></p>
                   <%= form_tag '/next', method: :post do %>
-                  <%= collection_select(:next, :next_id, Location.all.select{|location| location.id !=1}, :id,:name)%>
+                  <%= collection_select(:next, :next_id, Location.all.select{|location| location.id !=1}, :id,:name, :include_blank=> true)%>
                   <%= submit_tag "Go", class: "btn btn-secondary" %>
                 </div>
                 <% end %>
               <% end %>
+
           <% if !@location.decisions.empty? %>
             <% @location.decisions.each do |decision| %>
             <div class="item">

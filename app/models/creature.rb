@@ -3,50 +3,52 @@ class Creature < ApplicationRecord
   has_many :results
 
   def size_to_string
-    self.size.to_s + " inches"
+    if self.size < 12
+      self.size.to_s + " inches"
+    else
+      (self.size.to_f/12).round(2).to_s + " feet"
+    end
   end
 
-  def eat(edible)
-
-    edible.eaten = true
-    if edible.value > self.size
-      self.alive = false
-      result = Result.create(
-        user: self.user,
-        creature: self,
-        location: edible.location,
-        cause_of_death: "You bit off more than you can chew. \nDeath by asphyxiation!!!!")
-      self.results << result
-      self.save
-      "Game OVER"
-    else
-      self.size += edible.value
-
-      if edible.fly && !self.fly
-        self.fly = true
-        "Wow! What did you eat? You've sprouted wings!"
-      elsif edible.swim && !self.swim
-        self.swim = true
-        "You seem to have grown some webbed feet. Congrats, you can swim!"
+    def eat(edible)
+      edible.eaten = true
+      if edible.value > self.size
+        self.alive = false
+        result = Result.create(
+          user: self.user,
+          creature: self,
+          location: edible.location,
+          cause_of_death: "You bit off more than you can chew. \nDeath by asphyxiation!!!!")
+        self.results << result
+        self.save
+        "Game OVER"
       else
-        "You got bigger!"
+        self.size += edible.value
+
+        if edible.fly && !self.fly
+          self.fly = true
+          "Wow! What did you eat? You've sprouted wings!"
+        elsif edible.swim && !self.swim
+          self.swim = true
+          "You seem to have grown some webbed feet. Congrats, you can swim!"
+        else
+          "You got bigger!"
+        end
       end
     end
-  end
 
-  def evolve
-    if self.size >= 80 && self.creature_type == "hungry hungry caterpillar"
-      self.creature_type = "a slightly bigger caterpillar"
-      "You have evolved into a slightly bigger caterpillar!"
-    elsif self.size >= 1000 && self.creature_type == "a slightly bigger caterpillar"
-      self.creature_type = "middle-aged mutant ninja tortoise"
-      "You have evolved into a middle-aged mutant ninja tortoise!"
-    elsif self.size >= 4000 && self.creature_type == "middle-aged mutant ninja tortoise"
-      self.creature_type = "MechaGodzilla"
-      "You have evolved into a MechaGodzilla!"
+    def evolve
+      if self.size >= 80 && self.creature_type == "hungry hungry caterpillar"
+        self.creature_type = "a slightly bigger caterpillar"
+        "You have evolved into a slightly bigger caterpillar!"
+      elsif self.size >= 1000 && self.creature_type == "a slightly bigger caterpillar"
+        self.creature_type = "middle-aged mutant ninja tortoise"
+        "You have evolved into a middle-aged mutant ninja tortoise!"
+      elsif self.size >= 4000 && self.creature_type == "middle-aged mutant ninja tortoise"
+        self.creature_type = "MechaGodzilla"
+        "You have evolved into a MechaGodzilla!"
+      end
     end
-  end
-
 
   def decide(decision)
     if !decision.alive
