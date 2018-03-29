@@ -28,9 +28,9 @@
   -moz-background-size: 100% 100%;
   -o-background-size: 100% 100%;
   background-size: 100% 100%;
-  border-radius: 0px;
-  margin-right: -15px;
-  margin-left: -15px;
+  border-radius: 0px!important;
+  /* margin-right: -15px;
+  margin-left: -15px; */
   background-color:#CD5C5C!important;
 }
 
