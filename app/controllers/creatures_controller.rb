@@ -4,6 +4,7 @@ class CreaturesController < ApplicationController
   def create
     creature = Creature.create(name: params[:creature][:name], user_id: session[:user_id])
     session[:creature_id] = creature.id
+    flash.discard
 
     if creature
       redirect_to '/locations/1'
@@ -11,7 +12,7 @@ class CreaturesController < ApplicationController
       redirect_to "/home"
     end
   end
-  
+
   private
   def reset
     Edible.all.each do |edible|

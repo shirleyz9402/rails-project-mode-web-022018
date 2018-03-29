@@ -5,6 +5,7 @@ class EdiblesController < ApplicationController
 
     @user = User.find(session[:user_id])
     flash[:notice] = @creature.eat(@edible)
+    flash[:alert] = @creature.evolve
     @creature.save
     @edible.save
 
