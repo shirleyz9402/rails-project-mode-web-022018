@@ -70,3 +70,7 @@ div#other.container-fluid {
   margin-bottom: 0px!important;
   border-radius: 0px!important;
 }
+
+.creature-image {
+  width: 50%;
+}

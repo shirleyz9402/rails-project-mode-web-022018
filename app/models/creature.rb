@@ -10,6 +10,20 @@ class Creature < ApplicationRecord
     end
   end
 
+  def creature_type_image
+    # would a hash be better?
+    case self.creature_type
+    when "hungry hungry caterpillar"
+      "evo1.svg"
+    when "a slightly bigger caterpillar"
+      "evo2.svg"
+    when "middle-aged mutant ninja tortoise"
+      "evo3.svg"
+    when "MechaGodzilla"
+      "evo4.svg"
+    end
+  end
+  
     def eat(edible)
       edible.eaten = true
       if edible.value > self.size
