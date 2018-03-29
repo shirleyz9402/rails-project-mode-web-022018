@@ -1,8 +1,25 @@
-<div class="jumbotron text-center "> <h1>Sorry, <%= @result.creature.name %> died...</h1></div> <br><br>
+<div class="jumbotron text-center "> <h1>Sorry, <%= @result.creature.name %> died...</h1></div>
+<div class="container-fluid">
+  <div class="item death">
+  <a href="/assets/death1.gif">
+    <img src="/assets/death1.gif" alt="death" height="220" >
+  </a>
+</div>
+<div class="item death">
+  <a href="/assets/death2.gif">
+    <img src="/assets/death2.gif" alt="death" height="220">
+  </a>
+  </div>
+  <div class="item death">
+  <a href="/assets/death3.gif">
+    <img src="/assets/death3.gif" alt="death" height="220" >
+  </a>
+  </div>
+</div>
 
 <div class="table-striped">
-
-<table align="center" style="width:50%" border="2">
+<br>
+<table align="center" style="width:75%" border="2">
   <tr>
     <th class="text-center"><strong>Cause of Death </strong></th>
     <th class="text-center"><strong>Location </strong></th>
@@ -16,5 +33,3 @@
 </table>
 
 </div>
-
-<%# link to leaderboard %>
