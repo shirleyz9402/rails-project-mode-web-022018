@@ -1,21 +1,24 @@
 <br>
 <%= form_for @user, url: login_path, method: :post do |f| %>
-<div class="container-fluid" id="other">
+  <div class="container-fluid " id="other">
 
-<div class="item">
+    <div class="item text-left">
 
-  <%= f.label :name, "Name: " %>
-  <%= f.text_field :name %>
+      <%= f.label :name, "Name: " %>
+      <%= f.text_field :name, class:'form-control'  %>
 
-</div>
-<div class="item">
+    </div>
+    <div class="item text-left">
 
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %>
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password ,class:'form-control'%>
 
+      <br>
+      <div class="item">
+      <%= f.submit "log in" %>
+      Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
 
-  <%= f.submit "log in" %>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 <% end %>

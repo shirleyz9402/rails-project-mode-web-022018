@@ -3,15 +3,12 @@
   strong {font-weight:800;
     font-size: 1.25em;
   }
-  b {font-weight: 600}
+  b {font-weight: 600;}
 </style>
 
     <div class="jumbotron jumbotron-fluid" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
       <div class="container-fluid">
-            <h1 class="display-1" id="jumbo-text"><%= @location.name %></h1><br>
-            <% flash.each do |key, value| %>
-             <p><%= value %></p>
-           <% end %>
+            <h1 id="jumbo-text"><%= @location.name %></h1>
 
             <div class="lead" id="jumbo-text" >
             <strong><%= @creature.name %>'s stats:</strong>
@@ -21,6 +18,9 @@
             <li><b>Can fly:</b> <%= @creature.fly ? "yep" : "nope" %></li>
             <li><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></li>
           </ul>
+          <% flash.each do |key, value| %>
+          <div class="alert alert-success" role="alert"><%=value %></div>
+          <% end %>
         </div>
         </div>
       </div>
