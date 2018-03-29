@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/home' => 'users#home'
   get '/death' => 'users#death'
   post '/next' => 'locations#next'
+  get '/victory' => 'users#victory'
 
 
   resources :locations, only: :show

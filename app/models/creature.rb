@@ -35,15 +35,15 @@ class Creature < ApplicationRecord
   end
 
   def evolve
-    if self.size >= 10 && self.creature_type == "hungry hungry caterpillar"
+    if self.size >= 80 && self.creature_type == "hungry hungry caterpillar"
       self.creature_type = "a slightly bigger caterpillar"
       "You have evolved into a slightly bigger caterpillar!"
-    elsif self.size >= 20 && self.creature_type == "a slightly bigger caterpillar"
-      self.creature_type = "a mutant cocoon"
-      "You have evolved into a a mutant cocoon!"
-    elsif self.size >= 50 && self.creature_type == "a mutant cocoon"
-      self.creature_type = "a radiant moth"
-      "You have evolved into a a radiant moth!"
+    elsif self.size >= 1000 && self.creature_type == "a slightly bigger caterpillar"
+      self.creature_type = "middle-aged mutant ninja tortoise"
+      "You have evolved into a middle-aged mutant ninja tortoise!"
+    elsif self.size >= 4000 && self.creature_type == "middle-aged mutant ninja tortoise"
+      self.creature_type = "MechaGodzilla"
+      "You have evolved into a MechaGodzilla!"
     end
   end
 

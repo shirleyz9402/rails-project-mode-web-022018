@@ -1,0 +1,20 @@
+<div class="jumbotron text-center "> <h1>Congratulations! <%= @result.creature.name %> has eaten all the edibles we wanted to make.</h1></div> <br><br>
+
+<div class="table-striped">
+
+<table align="center" style="width:50%" border="2">
+  <tr>
+    <th class="text-center"><strong>Cause of Death</strong></th>
+    <th class="text-center"><strong>Location </strong></th>
+    <th class="text-center"><strong>Size </strong></th>
+  </tr>
+  <tr>
+    <td>oo oo oo oo staying alive, staying alive</td>
+    <td>Floating or imploding in space</td>
+    <td><%= @result.creature.size_to_string %></td>
+  </tr>
+</table>
+
+</div>
+
+<%# link to leaderboard %>

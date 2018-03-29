@@ -32,7 +32,7 @@
               <% if !edible.eaten %>
               <div class="item">
                   <%= form_tag(edible_path(edible), method: :put) do %>
-                    <%=label_tag edible.name %>
+                    <p><%=label_tag edible.name %></p>
                     <%= hidden_field_tag :edible_id, edible.id%>
                     <%=submit_tag "Eat", class: "btn btn-secondary" %>
                   </div>
@@ -41,10 +41,10 @@
               <% end %>
 
             <% if @location.id != 1 %>
-              <div class="item">
-                 <h4>Where u wanna go?</h4>
+              <div class="item selection-bar">
+                 <p><b>Where u wanna go? </b></p>
                   <%= form_tag '/next', method: :post do %>
-                  <%= collection_select(:next, :next_id, Location.all, :id,:name)%>
+                  <%= collection_select(:next, :next_id, Location.all.select{|location| location.id !=1}, :id,:name)%>
                   <%= submit_tag "Go", class: "btn btn-secondary" %>
                 </div>
                 <% end %>

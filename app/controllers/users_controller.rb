@@ -19,7 +19,9 @@ class UsersController < ApplicationController
     @result = @user.results.last
   end
 
-
+  def victory
+    @result = @user.results.last
+  end
   private
 
   def user_params

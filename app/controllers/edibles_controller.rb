@@ -8,11 +8,19 @@ class EdiblesController < ApplicationController
     flash[:alert] = @creature.evolve
     @creature.save
     @edible.save
-
-    if @creature.alive?
+    if @edible.name == "moon" && @creature.alive
+      @result = Result.create(
+        user: @user,
+        creature: @creature,
+        location: @edible.location,
+        cause_of_death: "oo oo oo oo staying alive, staying alive"
+        )
+        @creature.results << @result
+        @creature.save
+      redirect_to "/victory"
+    elsif @creature.alive
       redirect_to "/locations/#{@edible.location_id}"
     else
-
       redirect_to "/death"
     end
   end
