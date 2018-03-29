@@ -12,6 +12,7 @@
 
             <div class="lead" id="jumbo-text" >
             <strong><%= @creature.name %>'s stats:</strong>
+            <center><%= image_tag @creature.creature_type_image, class: 'creature-image' %></center>
             <ul>
             <li><b>Size:</b> <%= @creature.size_to_string %> </li>
             <li><b>Type:</b> <%= @creature.creature_type %></li>
