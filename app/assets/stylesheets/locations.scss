@@ -1,3 +1,40 @@
 // Place all the styles related to the locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding-top: 3.5rem;
+}
+.container {
+  display: flex;
+}
+.display-3 {
+  color: #fff;
+  /* background-color: #000; */
+}
+
+.jumbotron {
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  border-radius: 0px;
+
+  margin-right: -15px;
+  margin-left: -15px;
+  /* padding-bottom: 62.5%; */
+  /* background-position: 50% 50%; */
+  /* background-repeat: no-repeat; */
+}
+
+.creature {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.edible {
+  /* background-color: #eee; */
+}
+
+.location {
+  /* background-color: #000; */
+}

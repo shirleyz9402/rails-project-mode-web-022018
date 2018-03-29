@@ -1,90 +1,64 @@
-<main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
+<style>
+  strong {font-weight:800;
+    font-size: 1.25em;
+  }
+  b {font-weight: 600}
+</style>
 
-    <div class="jumbotron" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7 location" >
-            <h1 class="display-3"><%= @location.name %></h1>
-            <!-- <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p> -->
-            <%#= image_tag "#{@location.name.downcase}.jpg" %>
+    <div class="jumbotron jumbotron-fluid" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
+      <div class="container-fluid">
+            <h1 class="display-1" id="jumbo-text"><%= @location.name %></h1><br>
             <% flash.each do |key, value| %>
-              <p><%= value %></p>
-            <% end %>
-          </div>
-          <div class="col-md-5 creature">
-            <h1 class="display-5"><%= @creature.name %></h1>
-            <p><b>Size:</b> <%= @creature.size %></p>
-            <p><b>Type:</b> <%= @creature.creature_type %></p>
-            <p><b>Can fly:</b> <%= @creature.fly ? "yep" : "nope" %></p>
-            <p><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></p>
-          </div>
+             <p><%= value %></p>
+           <% end %>
+
+            <div class="lead" id="jumbo-text" >
+            <strong><%= @creature.name %>'s stats:</strong>
+            <ul>
+            <li><b>Size:</b> <%= @creature.size_to_string %> </li>
+            <li><b>Type:</b> <%= @creature.creature_type %></li>
+            <li><b>Can fly:</b> <%= @creature.fly ? "yep" : "nope" %></li>
+            <li><b>Can swim:</b> <%= @creature.swim ? "yep" : "nope" %></li>
+          </ul>
+        </div>
         </div>
       </div>
-    </div>
+<br><br>
+        <div class="container-fluid">
+          <!-- <div class="row"> -->
 
+            <% @location.edibles.each do |edible| %>
+              <% if !edible.eaten %>
+              <div class="item">
+                  <%= form_tag(edible_path(edible), method: :put) do %>
+                    <%=label_tag edible.name %>
+                    <%= hidden_field_tag :edible_id, edible.id%>
+                    <%=submit_tag "Eat", class: "btn btn-secondary" %>
+                  </div>
+                  <% end %>
+                <% end %>
+              <% end %>
 
-  <div class="container">
-    <!-- Example row of columns -->
-    <div class="container">
-
-      <% @location.edibles.each do |edible| %>
-        <% if !edible.eaten %>
-
-          <div class="col-md-4 edible">
-            <h2><%= edible.name %></h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <%= form_tag(edible_path(edible), method: :put) do %>
-              <h2><%=label_tag edible.name %>
-              <%= hidden_field_tag :edible_id, edible.id%>
-              <%=submit_tag "Eat", class: "btn btn-secondary"  %>
-              </h2>
+            <% if @location.id != 1 %>
+              <div class="item">
+                 <h4>Where u wanna go?</h4>
+                  <%= form_tag '/next', method: :post do %>
+                  <%= collection_select(:next, :next_id, Location.all, :id,:name)%>
+                  <%= submit_tag "Go", class: "btn btn-secondary" %>
+                </div>
+                <% end %>
+              <% end %>
+          <% if !@location.decisions.empty? %>
+            <% @location.decisions.each do |decision| %>
+            <div class="item">
+                <%= form_tag(decision_path(decision), method: :put) do %>
+                <p><%= decision.content %></p>
+                <%= hidden_field_tag :decision_id, decision.id%>
+                <%=submit_tag "Pick me!" ,class: "btn btn-secondary"  %>
+              </div>
+              <% end %>
             <% end %>
-            <!-- <p><a class="btn btn-secondary" href="#" role="button">Eat</a></p> -->
-          </div>
-
-        <% end %>
-      <% end %>
-
-      <% if @location.id != 1 %>
-      <div class="col-md-1"> </div>
-        <div class="col-md-3">
-          <h3>Where u wanna go?</h3> <br><br>
-            <%= form_tag '/next', method: :post do %>
-              <p class="text-center">
-              <%= collection_select(:next, :next_id, Location.all, :id,:name)%>
-               <%= submit_tag "Go", class: "btn btn-secondary" %>
-              </p>
             <% end %>
-        </div>
-      <% end %>
-      <% @location.decisions.each do |decision| %>
-      <div class="col-md-6">
-          <%= form_tag(decision_path(decision), method: :put) do %>
-          <h3 class="text-center"><%= decision.content %>
-          <%= hidden_field_tag :decision_id, decision.id%>
-          <%=submit_tag "Pick me!" ,class: "btn btn-secondary"  %>
-        </h3>
-          <% end %>
-          </div>
-      <% end %>
-
-
-      <!-- <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <!-- </div> -->
       </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div> -->
-    </div>
-
-    <hr>
-
-  </div> <!-- /container -->
-
-</main>
