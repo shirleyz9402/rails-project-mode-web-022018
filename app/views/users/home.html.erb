@@ -1,11 +1,12 @@
 <h1>Hi, <%= @user.name %></h1>
 
-<h3>New Game</h3>
-<%= form_for @user.creatures.build do |f| %>
-  <%= f.label "Name your creature!" %>
-  <%= f.text_field :name %>
-  <%= f.submit 'New Game' %>
-<% end %>
+<%# new form should only be here if they're not in the middle of a game? %>
+    <h3>New Game</h3>
+    <%= form_for @user.creatures.build do |f| %>
+      <%= f.label "Name your creature!" %>
+      <%= f.text_field :name %>
+      <%= f.submit 'New Game' %>
+    <% end %>
 
 <br><br>
 
