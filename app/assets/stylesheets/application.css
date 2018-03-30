@@ -74,3 +74,14 @@ div#other.container-fluid {
 .creature-image {
   width: 50%;
 }
+#rules.container-fluid {
+  justify-content:flex-start;
+  border-style:dashed;
+  width:auto;
+  font-size: 14pt;
+  margin-bottom: 20px;
+  padding-top: 5px;
+}
+#rules.container-fluid strong{
+  margin-left: -30px;
+}

@@ -2,6 +2,16 @@
 <div class="jumbotron"> <h1>Hi, <%= @user.name %>!</h1></div>
   <div class="col-md-12">
     <h3>Start a New Game</h3> <br>
+      <div class="container-fluid" id="rules">
+        <ol>
+        <p><strong>Rules: </strong>
+        <li>The goal is to survive to the end and eat all the edibles</li>
+        <li>You cannot eat edibles that are larger than your creature</li>
+        <li>Some locations need certain abilities to travel to</li>
+        <li>Abilities can be obtained by eating certain edibles</li>
+      </ol> </p>
+    </div>
+    <br>
       <%= form_for @user.creatures.build do |f| %>
         <%= f.label :name, "Name your creature:" %>
         <%= f.text_field :name%>
