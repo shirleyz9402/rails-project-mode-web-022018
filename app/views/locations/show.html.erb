@@ -11,8 +11,8 @@
 
     <div class="jumbotron jumbotron-fluid" style="background: url('/assets/<%=@location.name.downcase%>.jpg') no-repeat left center #eee ">
       <div class="container-fluid">
-        <% if ["Dumpster","Pond","Serengeti","Moon"].include?(@location.name)%>
-        <h1 id="jumbo-text">Welcome to the <%= @location.name %>!<br><p style="text-align:left">Whatchu wanna do?</p> </h1>
+        <% if ["NYC Dumpster","Pond","Serengeti","Moon","Sewer"].include?(@location.name)%>
+        <h1 id="jumbo-text">Welcome to the <%= @location.name %>!<br><p style="text-align:left"><br>Whatchu wanna do?</p> </h1>
         <% else  %>
           <h1 id="jumbo-text">Welcome to <%= @location.name %>!<br><p style="text-align:left"><br>Whatchu wanna do?</p> </h1>
         <% end  %>
@@ -51,7 +51,7 @@
               <div class="item selection-bar">
                  <p><b>Where u wanna go? </b></p>
                   <%= form_tag '/next', method: :post do %>
-                  <%= collection_select(:next, :next_id, Location.all.select{|location| location.id !=1}, :id,:name, selected: @location.id)%>
+                  <%= collection_select(:next, :next_id, Location.all, :id,:name, selected: @location.id)%>
                   <%= submit_tag "Go", class: "btn btn-secondary" %>
                 </div>
                 <% end %>
