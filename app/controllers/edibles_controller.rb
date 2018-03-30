@@ -9,6 +9,7 @@ class EdiblesController < ApplicationController
     @creature.save
     @edible.save
     if @edible.name == "moon" && @creature.alive
+      @creature.size += (600 - (@creature.updated_at.to_time.to_i - @creature.created_at.to_time.to_i).to_f/60).round(2)
       @result = Result.create(
         user: @user,
         creature: @creature,

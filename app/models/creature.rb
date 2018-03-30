@@ -23,11 +23,12 @@ class Creature < ApplicationRecord
       "evo4.svg"
     end
   end
-  
+
     def eat(edible)
       edible.eaten = true
       if edible.value > self.size
         self.alive = false
+        self.size += (600 - (self.updated_at.to_time.to_i - self.created_at.to_time.to_i).to_f/60).round(2)
         result = Result.create(
           user: self.user,
           creature: self,
@@ -80,6 +81,7 @@ class Creature < ApplicationRecord
   def visit(location)
     if location.fly && !self.fly
       self.alive = false
+      self.size += (600 - (self.updated_at.to_time.to_i - self.created_at.to_time.to_i).to_f/60).round(2)
       result = Result.create(
         user: self.user,
         creature: self,
