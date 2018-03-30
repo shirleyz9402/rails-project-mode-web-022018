@@ -23,12 +23,12 @@
   <tr>
     <th class="text-center"><strong>Cause of Death </strong></th>
     <th class="text-center"><strong>Location </strong></th>
-    <th class="text-center"><strong>Size </strong></th>
+    <th class="text-center"><strong>Score </strong></th>
   </tr>
   <tr>
     <td><%= @result.cause_of_death %></td>
     <td><%= @result.location.name %></td>
-    <td><%= @result.creature.size_to_string %></td>
+    <td><%= @result.creature.size %></td>
   </tr>
 </table>
 <center><a class="btn btn-outline-danger"  href="/home" role="button"><h3> Play Again?</h3></a></center>

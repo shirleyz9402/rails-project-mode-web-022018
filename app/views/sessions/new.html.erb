@@ -1,4 +1,7 @@
 <br>
+<% if flash[:alert] %>
+  <div class="alert alert-danger container-fluid" role="alert"> <h4><strong><%= flash[:alert] %> </strong></h4> </div>
+<% end %>
 <%= form_for @user, url: login_path, method: :post do |f| %>
   <div class="container-fluid " id="other">
 
@@ -15,8 +18,8 @@
 
       <br>
       <div class="item">
-      <%= f.submit "log in" %>
-      Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+      <strong><%= f.submit "Login", class: "btn btn-secondary"%>
+      Or <%= link_to(controller: 'users', action: 'new') { 'Sign Up' } %></strong>
 
       </div>
     </div>
